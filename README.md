@@ -2,7 +2,7 @@ Simple Distributed Deployment Tool
 -----------------------------------------------------------------------
 * https://github.com/vanthoainguyen/DistributedDeploymentTool
 
-##1. INTRODUCTION
+1. INTRODUCTION
 
 This is a small simple console x64 application tool which can
 
@@ -21,7 +21,7 @@ public interface ISignalListener
 Your app should implement this interface and listen on the Exit signal from this utility to facilitate the application gently exit. If you need x86 version, please compile from source ;)
 
 
-##2. USAGES
+2. USAGES
 * Execute a command on remote server:
 The server should listen on a port(default 5555) and specify a security token.
 
@@ -59,6 +59,6 @@ run following command:
 
 The --kill is optional, it will try to kill the process by provided process name which is "LongRunningService" so take attention if you have multiple processes of the same service.
 
-##3. LICENCE
+3. LICENCE
 http://sam.zoy.org/wtfpl/COPYING 
 ![Troll](http://i40.tinypic.com/2m4vl2x.jpg) 
