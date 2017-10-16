@@ -48,6 +48,7 @@ namespace DistributedDeployment
                     result += process.StandardError.ReadToEnd();
 
                     process.WaitForExit();
+                    result += "Exit code " + process.ExitCode;
                     process.Close();
 
                     return result;

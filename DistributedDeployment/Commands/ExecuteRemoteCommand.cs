@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace DistributedDeployment.Commands
 {
@@ -21,7 +22,11 @@ namespace DistributedDeployment.Commands
         {
             try
             {
-                return ServiceProxy.Execute(_remoteAddress, _securityToken, _command, _timeToWait > 0 ? _timeToWait : int.MaxValue);
+                var commandOutput = ServiceProxy.Execute(_remoteAddress, _securityToken, _command, _timeToWait > 0 ? _timeToWait : int.MaxValue);
+                if (!Regex.IsMatch(commandOutput, "Exit code 0"))
+                {
+                    throw new Exception(commandOutput + Environment.NewLine + "Remote command exited with an error code");
+                }
             }
             catch (Exception ex)
             {
