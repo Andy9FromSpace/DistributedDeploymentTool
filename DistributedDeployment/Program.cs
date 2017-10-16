@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ServiceProcess;
 using DistributedDeployment.NDesk;
+using System.Linq;
 
 namespace DistributedDeployment
 {
@@ -14,7 +15,7 @@ namespace DistributedDeployment
         static void Main(string[] args)
         {
             var svc = new DeploymentService(args);
-            if (!Environment.UserInteractive)
+            if (!args.ToList().Contains("-interactive"))
             {
                 Logger = new EventLogger();
                 ServiceBase.Run(svc);
@@ -28,7 +29,7 @@ namespace DistributedDeployment
 
         internal static void ReadKey()
         {
-            if(Environment.UserInteractive)
+            if (args.ToList().Contains("-interactive"))
             {
                 Console.ReadKey();
             }
