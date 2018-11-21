@@ -27,6 +27,7 @@ namespace DistributedDeployment.Commands
                 {
                     throw new Exception(commandOutput + Environment.NewLine + "Remote command exited with an error code");
                 }
+                return commandOutput;
             }
             catch (Exception ex)
             {
