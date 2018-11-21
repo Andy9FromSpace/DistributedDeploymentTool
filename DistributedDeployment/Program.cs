@@ -8,14 +8,14 @@ namespace DistributedDeployment
     static class Program
     {
         public static ILog Logger = new ConsoleLog();
- 
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         static void Main(string[] args)
         {
             var svc = new DeploymentService(args);
-            if (!args.ToList().Contains("-interactive"))
+            if (!args.ToList().Contains("--interactive"))
             {
                 Logger = new EventLogger();
                 ServiceBase.Run(svc);
@@ -24,14 +24,6 @@ namespace DistributedDeployment
             {
                 svc.Start();
                 svc.Stop();
-            }
-        }
-
-        internal static void ReadKey()
-        {
-            if (args.ToList().Contains("-interactive"))
-            {
-                Console.ReadKey();
             }
         }
 
